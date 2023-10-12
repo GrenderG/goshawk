@@ -137,8 +137,8 @@ def login_mh4g_kr_():
     return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh4g_kr_/')
 
 
-# 4G TWN. This is a special case. Apparently this URL was used in the first version of the taiwanese version for MH4G
-# but was later changed in an update so simply use the JPN one. Adding support for it anyway.
+# 4G TWN. This is a special case. Apparently this URL was used in the first versions of the taiwanese version for MH4G
+# but was later changed in an update to simply use the JPN one. Adding support for it anyway.
 
 @app.route('/SSL/3ds/redgiant/dl/pro_tw/login.cgi', methods=['POST'])
 def login_mh4g_tw():
