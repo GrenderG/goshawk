@@ -32,7 +32,7 @@ def serve_3ds_dlc_file(path):
 # Note: We ignore provided contents for most (all?) of the calls at this moment, we just serve the needed key + URL.
 # TODO: Add missing ones. See https://github.com/svanheulen/mhff/wiki/MHX-DLC-Key-Negotiation for protocol references.
 
-def make_login_v1_response(key, system_dir, game_dir):
+def make_login_v1_response(key, system_dir=None, game_dir=None):
     # This format is used for 3G/3U, 4, 4G/4U:
     # - key length (short, big-endian).
     # - key bytes, null terminated.
@@ -40,16 +40,20 @@ def make_login_v1_response(key, system_dir, game_dir):
     # - url bytes, not null terminated.
 
     key_bytes = key.encode('shift_jis') + b'\x00'
-    # URL string is not null terminated.
-    url_bytes = BASE_SERVER_URL_BYTES + system_dir.encode('shift_jis') + game_dir.encode('shift_jis')
     key_length_bytes = len(key_bytes).to_bytes(2, 'big')
-    url_length_bytes = len(url_bytes).to_bytes(2, 'big')
+    if system_dir and game_dir:
+        # URL string is not null terminated.
+        url_bytes = BASE_SERVER_URL_BYTES + system_dir.encode('shift_jis') + game_dir.encode('shift_jis')
+        url_length_bytes = len(url_bytes).to_bytes(2, 'big')
+        response_bytes = key_length_bytes + key_bytes + url_length_bytes + url_bytes
+    else:
+        # Original server is not sending the URL for MH4 JP.
+        response_bytes = key_length_bytes + key_bytes + b'\x00\x00'
 
-    response_bytes = key_length_bytes + key_bytes + url_length_bytes + url_bytes
     response = make_response(response_bytes)
 
     # Remove Content-Type header since original servers are not sending it.
-    del response.headers['Content-Type']
+    response.headers.remove('Content-Type')
 
     return response
 
@@ -86,12 +90,11 @@ def login_mh3ghd_us():
 
 
 # ----------------------------------------------------------------------------------------------------------------------
-# TODO: I'm not sure if MH4 should use BLOWFISH_KEY_TYPE_1, BLOWFISH_KEY_TYPE_2, or a different one. Need to check it.
 # 4 JAP.
 
 @app.route('/SSL/3ds/mh4/login.cgi', methods=['POST'])
 def login_mh4():
-    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh4/')
+    return make_login_v1_response(BLOWFISH_KEY_TYPE_1)
 
 
 # 4 KOR.
