@@ -70,7 +70,7 @@ def login_mh3gu_eu():
 
 @app.route('/SSL/wiiu/mh3ghd_eu/login.cgi', methods=['POST'])
 def login_mh3ghd_eu():
-    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh3ghd_eu/')
+    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_WIIU, '/mh3ghd_eu/')
 
 
 # 3U USA.
@@ -82,7 +82,7 @@ def login_mh3gu_us():
 
 @app.route('/SSL/wiiu/mh3ghd_us/login.cgi', methods=['POST'])
 def login_mh3ghd_us():
-    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh3ghd_us/')
+    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_WIIU, '/mh3ghd_us/')
 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -113,28 +113,28 @@ def login_mh4_tw():
 
 @app.route('/SSL/3ds/mh4g_nihon/login.cgi', methods=['POST'])
 def login_mh4g_nihon():
-    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh4g_nihon/')
+    return make_login_v1_response(BLOWFISH_KEY_TYPE_2, DIR_3DS, '/mh4g_nihon/')
 
 
 # 4U EUR.
 
 @app.route('/SSL/3ds/mh4g_eu_/login.cgi', methods=['POST'])
 def login_mh4g_eu_():
-    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh4g_eu_/')
+    return make_login_v1_response(BLOWFISH_KEY_TYPE_2, DIR_3DS, '/mh4g_eu_/')
 
 
 # 4U USA.
 
 @app.route('/SSL/3ds/mh4g_us_/login.cgi', methods=['POST'])
 def login_mh4g_us_():
-    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh4g_us_/')
+    return make_login_v1_response(BLOWFISH_KEY_TYPE_2, DIR_3DS, '/mh4g_us_/')
 
 
 # 4G KOR.
 
 @app.route('/SSL/3ds/mh4g_kr_/login.cgi', methods=['POST'])
 def login_mh4g_kr_():
-    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh4g_kr_/')
+    return make_login_v1_response(BLOWFISH_KEY_TYPE_2, DIR_3DS, '/mh4g_kr_/')
 
 
 # 4G TWN. This is a special case. Apparently this URL was used in the first versions of the taiwanese version for MH4G
