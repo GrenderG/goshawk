@@ -89,6 +89,13 @@ def login_mh3ghd_us():
     return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_WIIU, '/mh3ghd_us/')
 
 
+# 3U KOR.
+
+@app.route('/SSL/3ds/mh3gu_kor/login.cgi', methods=['POST'])
+def login_mh3gu_kor():
+    return make_login_v1_response(BLOWFISH_KEY_TYPE_1, DIR_3DS, '/mh3gu_kor/')
+
+
 # ----------------------------------------------------------------------------------------------------------------------
 # 4 JAP.
 
