@@ -3,6 +3,7 @@ from flask import Flask, send_from_directory, make_response
 # Constants.
 
 BASE_SERVER_URL = 'http://goshawk.capcom.co.jp/'
+X_SERVER_URL = 'http://spector.capcom.co.jp/'
 XX_SERVER_URL = 'http://meteor.capcom.co.jp/'
 SS_SERVER_URL = 'http://voodoo.capcom.co.jp/'
 
