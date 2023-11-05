@@ -3,7 +3,6 @@ import hashlib
 import hmac
 import io
 import logging
-import struct
 import time
 
 from Crypto.Cipher import AES
@@ -97,8 +96,7 @@ def make_login_v3_response(key, rsa_pub_key, server_url, system_dir='', game_dir
         client_hmac = byte_stream.read(32)
 
         # Decode the service_locator token and get the userid. In the current implementation, only userid is contained.
-        userid = int(Utils.b64decode(service_locator))
-        uid = struct.pack('>I', userid)
+        userid = int(Utils.b64decode(service_locator)).to_bytes(4, 'big')
 
         # Verification client hmac.
         '''
@@ -121,7 +119,7 @@ def make_login_v3_response(key, rsa_pub_key, server_url, system_dir='', game_dir
         server_nonce = int(time.time())
         server_nonce_bytes = server_nonce.to_bytes(4, 'big')
 
-        aes_key = uid + client_nonce + server_nonce_bytes + uid
+        aes_key = userid + client_nonce + server_nonce_bytes + userid
         iv = 16 * b'\0'
         aes = AES.new(aes_key, AES.MODE_CBC, iv)
         b_key = aes.encrypt(key)
@@ -129,7 +127,7 @@ def make_login_v3_response(key, rsa_pub_key, server_url, system_dir='', game_dir
         r_key_len = len(rsa_pub_key).to_bytes(2, 'big')
         url_bytes = server_url.encode('shift_jis') + system_dir.encode('shift_jis') + game_dir.encode('shift_jis')
         url_len = len(url_bytes).to_bytes(2, 'big')
-        client_hmac_key = hashlib.sha256(uid + client_nonce + server_nonce_bytes).digest()
+        client_hmac_key = hashlib.sha256(userid + client_nonce + server_nonce_bytes).digest()
         response_bytes = b_key_len + b_key + r_key_len + rsa_pub_key + url_len + url_bytes + server_nonce_bytes
         hs = hmac.new(client_hmac_key, response_bytes, hashlib.sha256)
         server_hmac = hs.digest()
