@@ -106,7 +106,7 @@ def make_login_v3_response(key, rsa_pub_key, server_url, system_dir='', game_dir
         '''
         client_hmac_key  = hashlib.sha256(uid + client_nonce).digest()
         h = hmac.new(client_hmac_key, data[:-32], hashlib.sha256)
-        if h.hexdigest() != client_hmac:
+        if h.hexdigest() != client_hmac.hex():
             logging.error('error! client hmac is the not same')
         '''
 
