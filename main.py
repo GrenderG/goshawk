@@ -19,14 +19,18 @@ app = Flask(__name__)
 
 @app.route(f'/{Constants.DIR_WIIU}/<path:path>', methods=['GET'])
 def serve_wiiu_dlc_file(path):
-    return send_from_directory(f'files/{Constants.DIR_WIIU}', path,
-                               mimetype='Content-Type: text/plain; charset=Shift_JIS')
+    if path.endswith('.txt'):
+        return send_from_directory(f'files/{Constants.DIR_WIIU}', path,
+                                   mimetype='Content-Type: text/plain; charset=Shift_JIS')
+    return send_from_directory(f'files/{Constants.DIR_WIIU}', path)
 
 
 @app.route(f'/{Constants.DIR_3DS}/<path:path>', methods=['GET'])
 def serve_3ds_dlc_file(path):
-    return send_from_directory(f'files/{Constants.DIR_3DS}', path,
-                               mimetype='Content-Type: text/plain; charset=Shift_JIS')
+    if path.endswith('.txt'):
+        return send_from_directory(f'files/{Constants.DIR_3DS}', path,
+                                   mimetype='Content-Type: text/plain; charset=Shift_JIS')
+    return send_from_directory(f'files/{Constants.DIR_3DS}', path)
 
 
 @app.route(f'/{Constants.DIR_P01}/<path:path>', methods=['GET'])
