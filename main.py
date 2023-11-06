@@ -292,35 +292,35 @@ def login_mhxx_tw():
                                   Constants.XX_SERVER_URL, Constants.DIR_3DS, '/mhxx_tw/')
 
 
-# MHST JP
+# MHSS JP
 
 @app.route('/SSL/3ds/mhss/login.cgi', methods=['POST'])
-def login_mhst_jp():
-    return make_login_v3_response(Constants.MHST_JP_KEY + b'\x08' * 0x08, Constants.MHST_PUB_KEY,
+def login_mhss_jp():
+    return make_login_v3_response(Constants.MHSS_JP_KEY + b'\x08' * 0x08, Constants.MHSS_PUB_KEY,
                                   Constants.SS_SERVER_URL, Constants.DIR_3DS, '/mhss_jp/')
 
 
-# MHST US
+# MHSS US
 
 @app.route('/SSL/3ds/mhss/login_us.cgi', methods=['POST'])
-def login_mhst_us():
-    return make_login_v3_response(Constants.MHST_US_KEY + b'\x08' * 0x08, Constants.MHST_PUB_KEY,
+def login_mhss_us():
+    return make_login_v3_response(Constants.MHSS_US_KEY + b'\x08' * 0x08, Constants.MHSS_PUB_KEY,
                                   Constants.SS_SERVER_URL, Constants.DIR_3DS, '/mhss_us/')
 
 
-# MHST EU
+# MHSS EU
 
 @app.route('/SSL/3ds/mhss/login_eu.cgi', methods=['POST'])
-def login_mhst_eu():
-    return make_login_v3_response(Constants.MHST_EU_KEY + b'\x08' * 0x08, Constants.MHST_PUB_KEY,
+def login_mhss_eu():
+    return make_login_v3_response(Constants.MHSS_EU_KEY + b'\x08' * 0x08, Constants.MHSS_PUB_KEY,
                                   Constants.SS_SERVER_URL, Constants.DIR_3DS, '/mhss_eu/')
 
 
-# MHST TW
+# MHSS TW
 
 @app.route('/SSL/3ds/mhss/login_tw.cgi', methods=['POST'])
-def login_mhst_tw():
-    return make_login_v3_response(Constants.MHST_TW_KEY + b'\x08' * 0x08, Constants.MHST_PUB_KEY,
+def login_mhss_tw():
+    return make_login_v3_response(Constants.MHSS_TW_KEY + b'\x08' * 0x08, Constants.MHSS_PUB_KEY,
                                   Constants.SS_SERVER_URL, Constants.DIR_3DS, '/mhss_tw/')
 
 
