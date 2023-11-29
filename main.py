@@ -39,7 +39,7 @@ def serve_airu_dlc_file(path):
 
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Login CGI routes.
+# Login CGI routes. See https://github.com/svanheulen/mhff/wiki/MHX-DLC-Key-Negotiation for protocol references.
 
 # v1
 def make_login_v1_response(key, system_dir='', game_dir='', server_url=Constants.BASE_SERVER_URL):
@@ -65,7 +65,6 @@ def make_login_v1_response(key, system_dir='', game_dir='', server_url=Constants
 
 
 # v3.
-# See https://github.com/svanheulen/mhff/wiki/MHX-DLC-Key-Negotiation for protocol references.
 def make_login_v3_response(key, rsa_pub_key, server_url, system_dir='', game_dir=''):
     response_bytes = b''
 
