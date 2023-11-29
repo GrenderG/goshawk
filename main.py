@@ -64,7 +64,7 @@ def make_login_v1_response(key, system_dir='', game_dir='', server_url=Constants
     return response
 
 
-# v3.
+# v3
 def make_login_v3_response(key, rsa_pub_key, server_url, system_dir='', game_dir=''):
     response_bytes = b''
 
