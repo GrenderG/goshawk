@@ -216,21 +216,21 @@ def login_mh4g_nihon():
 
 # 4U EUR.
 
-@app.route('/SSL/3ds/mh4g_eu_/login.cgi', methods=['POST'])
+@app.route('/SSL/3ds/mh4g_eu/login.cgi', methods=['POST'])
 def login_mh4g_eu_():
     return make_login_v1_response(Constants.BLOWFISH_KEY_TYPE_2, Constants.DIR_3DS, '/mh4g_eu_/')
 
 
 # 4U USA.
 
-@app.route('/SSL/3ds/mh4g_us_/login.cgi', methods=['POST'])
+@app.route('/SSL/3ds/mh4g_us/login.cgi', methods=['POST'])
 def login_mh4g_us_():
     return make_login_v1_response(Constants.BLOWFISH_KEY_TYPE_2, Constants.DIR_3DS, '/mh4g_us_/')
 
 
 # 4G KOR.
 
-@app.route('/SSL/3ds/mh4g_kr_/login.cgi', methods=['POST'])
+@app.route('/SSL/3ds/mh4g_kr/login.cgi', methods=['POST'])
 def login_mh4g_kr_():
     return make_login_v1_response(Constants.BLOWFISH_KEY_TYPE_2, Constants.DIR_3DS, '/mh4g_kr_/')
 
