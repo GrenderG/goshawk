@@ -8,8 +8,8 @@ import time
 from Crypto.Cipher import AES
 from flask import Flask, send_from_directory, make_response, request
 
-from app.constants import Constants
-from app.utils import Utils
+from utils.constants import Constants
+from utils.utils import Utils
 
 app = Flask(__name__)
 
