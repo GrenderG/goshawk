@@ -17,7 +17,9 @@ app = Flask(__name__)
 # ----------------------------------------------------------------------------------------------------------------------
 # DLC file routes.
 
-@app.route(f'/{Constants.DIR_WIIU}/<path:path>', methods=['GET'])
+# TODO: This should only be accepting GET requests, however, we have seen Cemu sending POST for some reason, so adding
+#  support for POST too for now.
+@app.route(f'/{Constants.DIR_WIIU}/<path:path>', methods=['GET', 'POST'])
 def serve_wiiu_dlc_file(path):
     if path.endswith('.txt'):
         return send_from_directory(f'files/{Constants.DIR_WIIU}', path,
@@ -209,6 +211,8 @@ def login_mh4_tw():
 # ----------------------------------------------------------------------------------------------------------------------
 # 4G JAP.
 
+# Note: unsure if the second route is actually used or not, leaving it anyway.
+@app.route('/SSL/3ds/mh4g/login.cgi', methods=['POST'])
 @app.route('/SSL/3ds/mh4g_nihon/login.cgi', methods=['POST'])
 def login_mh4g_nihon():
     return make_login_v1_response(Constants.BLOWFISH_KEY_TYPE_2, Constants.DIR_3DS, '/mh4g_nihon/')
