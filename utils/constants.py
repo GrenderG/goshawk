@@ -10,7 +10,9 @@ class Constants:
     DIR_P01 = 'p01'
 
     BLOWFISH_KEY_TYPE_1 = 'Capcom123 '
-    BLOWFISH_KEY_TYPE_2 = 'AgK2DYheaOjyHGP8'
+    BLOWFISH_KEY_MH4U_NA_EU = 'AgK2DYheaCjyHGPB'
+    BLOWFISH_KEY_MH4G_JP = 'AgK2DYheaCjyHGP8'
+    BLOWFISH_KEY_MH4G_KR = 'AgK2DYheaOjyHGP8'
 
     MHX_JP_KEY = b'Du9mgSyBmA7aQ5SX'
     MHX_US_KEY = b'N3uExdqeA6r8jusbnN7mBRVWS8qe9sDaLe6viEVG'
